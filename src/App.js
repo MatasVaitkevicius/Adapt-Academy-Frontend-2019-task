@@ -1,53 +1,34 @@
 import React, { useState } from 'react';
 import { take } from 'lodash';
-
+import { Administration } from './pages/administration/Administration'
+import { Home } from './pages/home/Home'
+import { Products } from './pages/products/Products';
+import { Purchases } from './pages/purchases/Purchases'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { NavMenu } from './components/NavMenu.js'
 import ApiFactory from './mock';
-import Editor from './Editor';
 
 export default function App() {
   const [value, setValue ] = useState('');
   return (
-    <div className="flexContainer">
-      <div className="flexChild rowParent">
-        <div className="flexChild columnParent" >
-          <div className="buttonsPanel">
-            <button onClick={ getIsAdmin }>Test `GET` /api/is-admin</button>
-            <button onClick={ getAllProducts }>Test `GET` /api/products</button>
-            <button onClick={ (_evt) => { getProduct(7) } }>
-              Test `GET` /api/products/7 for product with id equal to 7
-            </button>
-            <button onClick={ (_evt) => { deleteProduct(1) } }>
-              Test `DELETE` /api/products/1 for product with id equal to 1
-            </button>
-            <button onClick={ 
-              (_evt) => { 
-                updateProduct(2, {
-                  "id": 2,
-                  "name": "Foo bar",
-                  "description": "Foo bar foo bar foo bar",
-                  "price": 3.75,
-                  "new": false
-                });
-              }}>
-                Test `PUT` /api/products/2 for product with id equal to 2
-              </button>
-              <button onClick={ (_evt) => { 
-                buyItems([{
-                  "id": 2,
-                  "name": "Foo bar",
-                  "description": "Foo bar foo bar foo bar",
-                  "price": 3.75,
-                  "new": false
-                }])
-              } }>
-                Test `POST` /api/buy for given items
-              </button>
-          </div>
-          <div className="flexChild rowParent">
-            <Editor value={value} />
-          </div>
-        </div>
-      </div>
+    <div className="App">
+      <Router>
+      <NavMenu/>
+      <Switch>
+          <Route exact path="/">
+            <Home/>
+            </Route>
+          <Route path="/administration">
+            <Administration/>
+          </Route>
+          <Route path="/products">
+            <Products/>
+          </Route>
+          <Route path="/purchases">
+            <Purchases/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 
