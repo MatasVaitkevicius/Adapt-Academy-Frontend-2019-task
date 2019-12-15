@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
 import { take } from 'lodash';
-import { Administration } from './pages/administration/Administration'
+import { Admin } from './pages/administration/Admin'
 import { Home } from './pages/home/Home'
 import { Products } from './pages/products/Products';
 import { Purchases } from './pages/purchases/Purchases'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { NavMenu } from './components/NavMenu.js'
+import NavMenu from './components/NavMenu.js'
 import ApiFactory from './mock';
+import './index.scss';
 
 export default function App() {
-  const [value, setValue ] = useState('');
+  const [value, setValue] = useState('');
   return (
-    <div className="App">
-      <Router>
-      <NavMenu/>
+    <Router>
+      <NavMenu />
       <Switch>
-          <Route exact path="/">
-            <Home/>
-            </Route>
-          <Route path="/administration">
-            <Administration/>
-          </Route>
-          <Route path="/products">
-            <Products/>
-          </Route>
-          <Route path="/purchases">
-            <Purchases/>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+        <Route exact path="/" component={Home} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/products" component={Products} />
+        <Route path="/purchases" component={Purchases} />
+      </Switch>
+    </Router>
   );
 
   function getIsAdmin() {
@@ -90,7 +81,7 @@ export default function App() {
   }
 
   function buyItems(items) {
-    ApiFactory.getInstance().post('/api/buy', { itemsToBuy: items }).then(function() {
+    ApiFactory.getInstance().post('/api/buy', { itemsToBuy: items }).then(function () {
       alert('Bought Items. This is fake API that do nothing.');
     }).catch((error) => {
       // TODO: Display nice error message.
