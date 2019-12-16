@@ -14,18 +14,12 @@ import './HomeCarousel.scss'
 const items = [
   {
     src: Puh,
-    button: 'Slide 1',
-    caption: 'Slide 1'
   },
   {
     src: Tei,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
   },
   {
     src: Tow,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
   }
 ];
 
@@ -58,7 +52,6 @@ const HomeCarousel = (props) => {
         key={item.src}
       >
         <img className="potato-carousel" src={item.src} alt={item.altText} />
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
       </CarouselItem>
     );
   });

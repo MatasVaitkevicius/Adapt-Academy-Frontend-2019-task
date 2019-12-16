@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Container, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class NavMenu extends React.Component {
@@ -27,7 +27,7 @@ class NavMenu extends React.Component {
                     <NavbarBrand tag={Link} to="/">🥔PUH-TEI-TOW🥔</NavbarBrand>
                     <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                     <Collapse className="d-sm-inline-flex" isOpen={!this.state.collapsed} navbar>
-                        <ul className="navbar-nav flex-grow">
+                        <Nav pills>
                             <NavItem>
                                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                             </NavItem>
@@ -40,7 +40,7 @@ class NavMenu extends React.Component {
                             <NavItem>
                                 <NavLink tag={Link} className="text-dark" to="/purchases">Purchases</NavLink>
                             </NavItem>
-                        </ul>
+                        </Nav >
                     </Collapse>
                 </Navbar>
             </header>

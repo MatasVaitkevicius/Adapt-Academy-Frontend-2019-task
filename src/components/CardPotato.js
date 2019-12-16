@@ -18,9 +18,9 @@ class CardPotato extends React.Component {
       <div>
         <Card>
           <CardBody>
-            <CardImg src={this.state.potato.images[0].url} alt="potato-image" />
+            <CardImg src={this.state.potato.images.length > 0 && this.state.potato.images[0].url} alt="potato-image" />
             <CardTitle>{this.state.potato.name}</CardTitle>
-            <CardText>{this.state.potato.description}</CardText>
+            <CardText className="card__text">{this.state.potato.description}</CardText>
           </CardBody>
         </Card>
       </div>

@@ -6,10 +6,10 @@ import { NavLink, Col, Button, Row, Container, NavItem } from 'reactstrap';
 import './styles.scss'
 import { Link } from 'react-router-dom';
 import ProductsButton from '../../components/ProductsButton'
-const Home = () => (
+const Home = ({ products }) => (
     <div className="card">
         <HomeCarousel />
-        <Link to="/products" className="btn btn-dark">Sign up</Link>
+        <Link to="/products" className="btn btn-dark btn-lg">Shop Now</Link>
         <Container>
             <Row xs="2">
                 {products.map(p =>
