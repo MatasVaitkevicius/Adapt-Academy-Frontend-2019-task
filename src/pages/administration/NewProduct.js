@@ -3,6 +3,7 @@ import './styles.scss'
 import CarouselPotato from '../../components/CarouselPotato'
 import { Form, FormGroup, Label, Col, Input, FormText, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 class NewProduct extends React.Component {
 
@@ -25,11 +26,21 @@ class NewProduct extends React.Component {
     })
   }
 
-  createProduct() {
-    const product = {
-      ...this.state
+  createProduct(e) {
+    const errors = []
+
+    if (!this.state.name) {
+      errors.push("Product name is missing")
     }
-    this.props.addNewProduct(product)
+    if (!this.state.description) {
+      errors.push("Description is missing")
+    }
+    if (errors.length > 0) {
+      e.preventDefault()
+      errors.forEach(e => toast.error(e))
+    } else {
+      this.props.addNewProduct(...this.state)
+    }
   }
 
   handleImageChange(e) {
@@ -79,7 +90,7 @@ class NewProduct extends React.Component {
             <Input onChange={this.handleImageChange} type="file" name="file" id="potatoFile" />
           </Col>
         </FormGroup>
-        <Link onClick={() => this.createProduct()} to="/admin" className="btn btn-success">Submit</Link>
+        <Link onClick={this.createProduct} to="/admin" className="btn btn-success">Submit</Link>
         {images.map(i => (
           <>
             <Button onClick={() => this.onDeleteImage(i)}>X</Button> <img src={i.url} height="100" width="100" />
