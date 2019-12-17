@@ -30,7 +30,7 @@ const CarouselPotato = (props) => {
 
   const slides = props.images.map((image) => {
     return (
-      <CarouselItem
+      <CarouselItem className="carousel__image"
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={image.url}

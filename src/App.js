@@ -51,6 +51,9 @@ class App extends React.Component {
       product.id = newId + 1
       this.setState({ products: [...this.state.products, product] })
     }
+    this.setState({
+      activePotato: null
+    })
   }
 
   decreaseProductCount = (potato) => {

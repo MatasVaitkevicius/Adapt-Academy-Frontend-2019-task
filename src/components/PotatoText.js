@@ -14,7 +14,7 @@ class PotatoText extends React.Component {
       <CardBody>
         <CardTitle>{this.state.potato.name}</CardTitle>
         <CardSubtitle>{this.state.potato.price}€</CardSubtitle>
-        <CardText>{this.state.potato.description}</CardText>
+        <CardText className="overflow-hidden">{this.state.potato.description}</CardText>
       </CardBody>
     )
   }
