@@ -5,9 +5,9 @@ import {
   CarouselControl,
   CarouselIndicators,
 } from 'reactstrap';
-import './CarouselPotato.scss'
+import './CarouselProduct.scss'
 
-const CarouselPotato = (props) => {
+const CarouselProduct = (props) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -54,4 +54,4 @@ const CarouselPotato = (props) => {
   );
 }
 
-export default CarouselPotato;
+export default CarouselProduct;

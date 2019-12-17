@@ -1,6 +1,5 @@
 import React from 'react'
 import './styles.scss'
-import CarouselPotato from '../../components/CarouselPotato'
 import { Form, FormGroup, Label, Col, Input, Card, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -36,10 +35,10 @@ class NewProduct extends React.Component {
     if (!this.state.description) {
       errors.push("Description is missing")
     }
-    if(this.state.price <= 0) {
+    if (this.state.price <= 0) {
       errors.push("Invalid price")
     }
-    if(this.state.images.length === 0) {
+    if (this.state.images.length === 0) {
       errors.push("Please add an image")
     }
     if (errors.length > 0) {
@@ -57,17 +56,16 @@ class NewProduct extends React.Component {
     let file = e.target.files[0];
     console.log(this.state.images.length)
     let newId = 1
-    if(this.state.images)
-    {
+    if (this.state.images) {
       newId = this.state.images.length
-    } 
-      console.log(newId)
-      reader.onloadend = () => {
-        this.setState({
-          images: [...this.state.images, { url: reader.result, id: newId}]
-        });
-      }
-      reader.readAsDataURL(file)
+    }
+    console.log(newId)
+    reader.onloadend = () => {
+      this.setState({
+        images: [...this.state.images, { url: reader.result, id: newId }]
+      });
+    }
+    reader.readAsDataURL(file)
   }
 
 
@@ -106,15 +104,15 @@ class NewProduct extends React.Component {
         <Link onClick={this.createProduct} to="/admin" className="btn btn-success">Submit</Link>
         <Container className="text-left">
           <Row>
-        {images.map(i => (
-          <Card className="form__card">
-          <Col>
-             <img src={i.url} height="150" width="150" />
-             <Button outline color="secondary" onClick={() => this.onDeleteImage(i)}>X</Button>
-          </Col>
-          </Card>))}
+            {images.map(i => (
+              <Card className="form__card">
+                <Col>
+                  <img src={i.url} height="150" width="150" />
+                  <Button outline color="secondary" onClick={() => this.onDeleteImage(i)}>X</Button>
+                </Col>
+              </Card>))}
           </Row>
-          </Container>
+        </Container>
       </Form >
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
-class PotatoText extends React.Component {
+class ProductText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,4 +20,4 @@ class PotatoText extends React.Component {
   }
 }
 
-export default PotatoText;
+export default ProductText;
